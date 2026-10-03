@@ -1,0 +1,85 @@
+TITLE
+AlienX 3D: A General SO(3)-Equivariant Neural Operator for 3D Physical Fields
+
+CREATORS
+Yaka, Eric Heylel Danjuma (Elbàlor / The Digital Necromancer)
+Affiliation: Capital Software / Next Gen Tech, Abuja, Nigeria
+
+DESCRIPTION
+AlienX 3D is a 421,507-parameter neural operator that learns the evolution of
+3D physical fields across multiple physical regimes without retraining. It is
+built from four PDE-agnostic mechanisms: (1) an SO(3)-equivariant local frame
+derived from the gradient and Hessian of a scalar field, (2) Quantum
+Self-Attention (QSA) — complex-valued attention in CP^(n-1) with a geometric
+phase, (3) per-sample non-dimensionalization with regime conditioning, and
+(4) Biot–Savart feedback that enforces divergence-free rollouts by
+construction.
+
+Demonstrated on incompressible Navier-Stokes (Taylor-Green vortex, G=32):
+0.46% single-step relative RMSE across three Reynolds numbers (300, 628,
+1200) in one model; QSA ablation degrades validation MSE by 32.81x; stable
+73-step autoregressive rollout (24x the training horizon) with energy error
+bounded under 6%.
+
+Zero-shot generalization: on a held-out Reynolds number (Re=900, never seen
+in training) the model achieves 0.53% single-step relative RMSE, all rollout
+invariants land on the interpolation trend between the trained regimes, and
+ablating the complex phase channel (gi=0) degrades accuracy 4.74x — evidence
+the model interpolates the physics of unseen regimes rather than memorizing
+trajectories.
+
+The release contains the trained checkpoint, normalization statistics,
+importable model and physics code, the full zero-shot evaluation harness
+(with a sanity gate that reproduces the in-distribution paper number before
+emitting any new number), the figure-generation pipeline, all result metrics,
+three paper figures (300 DPI), the complete paper (PDF + editable source),
+and the full 15-bug debugging log (Section 8). Every number in the paper is
+regenerable from the included code on a single 4 GB GPU.
+
+NOTES: The released checkpoint is the epoch-55 K=3 stage of the K=1->2->3->5
+curriculum (the K=5 stage was cut short by a Colab session timeout; disclosed
+and analyzed in the paper, Sections 5.2 and 7.4).
+
+KEYWORDS
+neural operator, equivariance, SO(3), quantum self-attention, complex-valued
+neural networks, Navier-Stokes, turbulence, physics-informed machine
+learning, scientific machine learning, zero-shot generalization
+
+LICENSE
+AGPL-3.0 (code, weights, paper)
+
+RELATED IDENTIFIERS
+- Quantum Self-Attention (QSA), Zenodo DOI: 10.5281/zenodo.22773015
+  (isSupplementedBy — the attention mechanism used by AlienX 3D)
+- AlienX 2D (predecessor), HuggingFace: ElBalor/AlienX-2D-Isotropic-Stencil
+- Code repository: github.com/ElBalor/AlienX (S03-Invariance)
+
+FILES
+AlienX_3D_Paper.pdf        The complete paper (28 pp, primary artifact)
+AlienX_3D_Paper.docx       Editable paper source
+alienx_k5_best.pt          Trained checkpoint (epoch-55 K=3, 421,507 params)
+alienx_k5_stats.pkl        Normalization statistics + training config (required for inference)
+model.py                   Importable architecture (ISNOperator3D)
+physics.py                 Spectral DNS + physics operators
+eval_re900_zero_shot.py    Full zero-shot evaluation harness (sanity-gated)
+make_figures.py            Figure-generation pipeline
+colab.py                   Self-contained training script (as run on Colab T4)
+alienx_k5_test_metrics_v2.npy    In-distribution metrics (single-step, ablation, rollout)
+alienx_k5_re900_zero_shot.npy    Zero-shot Re=900 metrics
+fig1_mse_growth.png        Rollout MSE vs time, all Re incl. held-out Re=900
+fig2_invariants.png        Energy + enstrophy: DNS vs model
+fig3_divergence.png        |div u| during rollout (free by construction)
+README.md                  Results summary + reproduction instructions
+checksums.sha256           SHA-256 checksums of all files
+LICENSE                    AGPL-3.0
+
+UPLOAD INSTRUCTIONS (zenodo.org, new upload)
+1. Title / Creator / Description: copy from the blocks above.
+2. Upload type: Dataset or Software (recommend: Software).
+3. Keywords, License (AGPL-3.0), Related identifiers: fill from above.
+4. Drag in ALL files in this folder except ZENODO_METADATA.txt.
+5. Check "AI-enabled"? This is a scientific neural-network artifact; Zenodo's
+   AI flag targets generative-AI content — select No.
+6. Reserve DOI on the upload form, then paste it into the paper's Appendix B
+   and the HuggingFace model card before hitting Publish.
+7. Version: 1.0.0

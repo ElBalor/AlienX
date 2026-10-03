@@ -1,0 +1,47 @@
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).
+Drive save path: /content/drive/MyDrive/AlienX_3D_K5
+Device: cuda
+VRAM: 15.6 GB
+
+======================================================================
+ AlienX 3D — K=5 Fast Run
+ G=32 | Re=[300, 628, 1200] | K_max=5 | T=10.0 | Epochs=120
+ B=2×2 | snapshots/Re=74
+ loss: mse=1.0 E=2.0 Z=5.0 div=0.05 spec=0.3
+ Drive: /content/drive/MyDrive/AlienX_3D_K5
+======================================================================
+
+[1/5] Generating DNS (T=10, ~90 sec per Re)...
+    TGV G=32, ν=0.02094 (Re≈300), T=10.0
+    Re=300: (74, 32, 32, 32, 3)
+    TGV G=32, ν=0.01001 (Re≈628), T=10.0
+    Re=628: (74, 32, 32, 32, 3)
+    TGV G=32, ν=0.00524 (Re≈1200), T=10.0
+    Re=1200: (74, 32, 32, 32, 3)
+
+[2/5] Caching physics per Re...
+  Re=300: u=(74, 32, 32, 32, 3)
+  Re=628: u=(74, 32, 32, 32, 3)
+  Re=1200: u=(74, 32, 32, 32, 3)
+
+[3/5] Computing normalization stats...
+  tgt mean=0.0000 std=4.9530
+
+[4/5] Building model...
+  Total params: 421,507
+✓ Stats saved to Drive: /content/drive/MyDrive/AlienX_3D_K5/alienx_k5_stats.pkl
+
+[5/5] Training
+
+★ Ep 001/120 | K= 1 | ValMSE 0.113983 | Rel 6.82% | [mse=1.1419 E=0.6626 Z=0.1779 S=0.1802 D=7.10e-13] | im/re 0.995 | 177s
+★ Ep 005/120 | K= 1 | ValMSE 0.005896 | Rel 1.55% | [mse=0.0107 E=0.0005 Z=0.0006 S=0.0009 D=7.87e-13] | im/re 0.997 | 177s
+★ Ep 010/120 | K= 1 | ValMSE 0.003539 | Rel 1.20% | [mse=0.0101 E=0.0029 Z=0.0033 S=0.0049 D=4.05e-13] | im/re 0.999 | 177s
+  Ep 015/120 | K= 2 | ValMSE 0.025486 | Rel 3.22% | [mse=0.1717 E=0.0393 Z=0.0197 S=0.0513 D=6.75e-13] | im/re 1.001 | 321s
+  Ep 020/120 | K= 2 | ValMSE 0.006662 | Rel 1.65% | [mse=0.0235 E=0.0017 Z=0.0017 S=0.0028 D=6.54e-13] | im/re 1.003 | 321s
+  Ep 025/120 | K= 2 | ValMSE 0.003391 | Rel 1.18% | [mse=0.0133 E=0.0017 Z=0.0019 S=0.0029 D=8.37e-13] | im/re 1.004 | 321s
+  Ep 030/120 | K= 2 | ValMSE 0.003210 | Rel 1.14% | [mse=0.0091 E=0.0019 Z=0.0024 S=0.0029 D=7.51e-13] | im/re 1.005 | 321s
+  Ep 035/120 | K= 3 | ValMSE 0.003075 | Rel 1.12% | [mse=0.0089 E=0.0023 Z=0.0029 S=0.0038 D=6.76e-13] | im/re 1.006 | 465s
+  Ep 040/120 | K= 3 | ValMSE 0.001469 | Rel 0.77% | [mse=0.0055 E=0.0003 Z=0.0003 S=0.0004 D=5.16e-13] | im/re 1.008 | 465s
+★ Ep 045/120 | K= 3 | ValMSE 0.001054 | Rel 0.66% | [mse=0.0047 E=0.0005 Z=0.0006 S=0.0008 D=5.61e-13] | im/re 1.009 | 465s
+  Ep 050/120 | K= 3 | ValMSE 0.000893 | Rel 0.60% | [mse=0.0035 E=0.0007 Z=0.0008 S=0.0012 D=6.53e-13] | im/re 1.009 | 465s
+★ Ep 055/120 | K= 3 | ValMSE 0.000624 | Rel 0.50% | [mse=0.0026 E=0.0001 Z=0.0001 S=0.0002 D=6.63e-13] | im/re 1.012 | 465s
