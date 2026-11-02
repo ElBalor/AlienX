@@ -1,0 +1,215 @@
+{
+  "run_metadata": {
+    "protocol_id": "alienx_mhd_hard_regimes_k_unroll_65ep_v3",
+    "run_kind": "full_32_cube_protocol",
+    "grid": 32,
+    "seed": 7,
+    "train_per_regime": 32,
+    "val_per_regime": 8,
+    "heldout_per_regime": 32,
+    "snapshots": 12,
+    "dt": 0.01,
+    "ic_perturbation": 0.1,
+    "gate5_iterations": 400,
+    "gate5_max_block_rise": 1.35,
+    "epochs_by_k": {
+      "1": 10,
+      "2": 10,
+      "3": 15,
+      "5": 15,
+      "8": 15
+    },
+    "steps_per_epoch": 256,
+    "lr_warmup_epochs": 5,
+    "frame_eigh_chunk": 4096,
+    "qsa_chunk": 256,
+    "training_step_checkpointing": true,
+    "validation_unroll_per_regime": 4,
+    "validation_interval": 4,
+    "activation_checkpointing": "auto",
+    "k_gradient_mode": "truncated",
+    "re_values": [
+      300.0,
+      600.0,
+      1200.0,
+      2400.0
+    ],
+    "rm_values": [
+      300.0,
+      600.0,
+      1200.0,
+      2400.0
+    ],
+    "train_regimes": [
+      [
+        300.0,
+        300.0
+      ],
+      [
+        300.0,
+        600.0
+      ],
+      [
+        300.0,
+        1200.0
+      ],
+      [
+        300.0,
+        2400.0
+      ],
+      [
+        600.0,
+        300.0
+      ],
+      [
+        600.0,
+        600.0
+      ],
+      [
+        600.0,
+        1200.0
+      ],
+      [
+        600.0,
+        2400.0
+      ],
+      [
+        1200.0,
+        300.0
+      ],
+      [
+        1200.0,
+        600.0
+      ],
+      [
+        1200.0,
+        1200.0
+      ],
+      [
+        1200.0,
+        2400.0
+      ],
+      [
+        2400.0,
+        300.0
+      ],
+      [
+        2400.0,
+        600.0
+      ],
+      [
+        2400.0,
+        1200.0
+      ],
+      [
+        2400.0,
+        2400.0
+      ]
+    ],
+    "held_out_regimes": [
+      [
+        3000.0,
+        3000.0
+      ],
+      [
+        3000.0,
+        600.0
+      ],
+      [
+        600.0,
+        3000.0
+      ]
+    ],
+    "device": "cuda",
+    "torch_version": "2.11.0+cu128"
+  },
+  "gates": {
+    "gate1_frame_equivariance": {
+      "passed": true,
+      "data": {
+        "degen_frac": 0.02296956442296505,
+        "oct_pass": true,
+        "gen_pass": true,
+        "rt_floor": 1e-06,
+        "tangent_fb_oct": 0.0,
+        "tangent_fb_gen": 0.0
+      }
+    },
+    "gate2_dealias": {
+      "passed": true,
+      "data": {
+        "kept": 4169,
+        "expect": 4188
+      }
+    },
+    "gate3_solver_physics": {
+      "passed": true,
+      "data": {
+        "E0": 0.18890169262886047,
+        "E1": 0.1888940930366516,
+        "max_div_u": 6.575211841663986e-07,
+        "max_div_b": 3.942371620269114e-07,
+        "stress_cases": [
+          {
+            "re": 2400.0,
+            "rm": 2400.0,
+            "finite": true,
+            "max_div_u": 6.51890672997979e-07,
+            "max_div_b": 3.878708128013386e-07,
+            "passed": true
+          },
+          {
+            "re": 3000.0,
+            "rm": 3000.0,
+            "finite": true,
+            "max_div_u": 6.546494546455506e-07,
+            "max_div_b": 3.8696586557307455e-07,
+            "passed": true
+          },
+          {
+            "re": 3000.0,
+            "rm": 600.0,
+            "finite": true,
+            "max_div_u": 6.959126608307997e-07,
+            "max_div_b": 3.657612239749142e-07,
+            "passed": true
+          },
+          {
+            "re": 600.0,
+            "rm": 3000.0,
+            "finite": true,
+            "max_div_u": 6.635597173954011e-07,
+            "max_div_b": 3.9520540440207697e-07,
+            "passed": true
+          }
+        ]
+      }
+    },
+    "gate4_reshape": {
+      "passed": true,
+      "data": {
+        "identity": 2.5712563910587063e-15,
+        "swap": 1.7302618026733398
+      }
+    },
+    "gate5_overfit": {
+      "passed": 1.0,
+      "data": {
+        "reduction": 4263.14578878046,
+        "u_rel": 0.08582053333520889,
+        "b_rel": 0.015594515949487686,
+        "block_monotonic": 1.0,
+        "worst_uptick": 1.0514016398807382,
+        "finite": true
+      }
+    },
+    "gate6_paired_rotation": {
+      "passed": true,
+      "data": {
+        "loss_ratio": 1.0000018148803818,
+        "max_grad_rel": 0.005635831505060196,
+        "worst_param": "blocks.0.k_proj.bias"
+      }
+    }
+  }
+}

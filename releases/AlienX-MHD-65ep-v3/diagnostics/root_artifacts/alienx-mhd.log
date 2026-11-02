@@ -1,0 +1,211 @@
+7.2s 1 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.2s 2 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.2s 3 0.00s - to python to disable frozen modules.
+7.2s 4 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+7.8s 5 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.8s 6 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.8s 7 0.00s - to python to disable frozen modules.
+7.8s 8 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+16.3s 9 [setup] device=cuda grid=32^3 out=/kaggle/working/alienx_mhd_gates_65ep_v3
+16.3s 10 [script] revision=hard-regime-grid-k-unroll-validation-65ep-v3; f64_chunk_default=128; gate5_resume_cache=on
+17.1s 11 ======================================================================
+17.1s 12 ALIENX 3D MHD — SIX-GATE PROTOCOL
+17.1s 13 ======================================================================
+17.1s 14 [run] kind=full_32_cube_protocol; metadata=/kaggle/working/alienx_mhd_gates_65ep_v3/run_metadata.json
+17.1s 15 
+17.1s 16 ======================================================================
+17.1s 17 ISOLATION TESTS
+17.1s 18 ======================================================================
+17.9s 19 [A] exact permute roundtrip:  0.000000e+00  PASS
+18.1s 20 [B] interpolate roundtrip:    1.156380e-15  PASS
+18.1s 21 [C] exact vs interpolated:    1.157876e-15  PASS
+18.1s 22 [B'] generic SO(3) tensor-rotation roundtrip: 7.174254e-08  PASS (tol 1e-6, float32)
+18.5s 23 [B''] generic field-interpolation floor (informational, off-lattice seam corruption): 1.3450
+18.5s 24 [D] Hessian equivariance: 4.827976e-04  (lim 1e-03, float32 spectral)  PASS
+18.8s 25 [E] eigvec[0]: |cos| mean=1.0000 min=1.0000 flip=0.6304 (flip expected from eigh, repaired by sign-lock) ->
+18.8s 26 [E] eigvec[1]: |cos| mean=1.0000 min=1.0000 flip=0.5848 (flip expected from eigh, repaired by sign-lock) ->
+18.8s 27 [E] eigvec[2]: |cos| mean=1.0000 min=1.0000 flip=0.6482 (flip expected from eigh, repaired by sign-lock) ->
+18.8s 28 [F] |n_H·n_grad|<1e-3: 0.0013  <1e-2: 0.0112
+18.8s 29 
+18.8s 30 ======================================================================
+18.8s 31 GATE 1 — FRAME EQUIVARIANCE
+18.8s 32 ======================================================================
+19.1s 33 [gate1] degeneracy fraction:
+19.1s 34 τ=0.0001: 0.0002
+19.1s 35 τ=0.001: 0.0023
+19.1s 36 τ=0.01: 0.0230
+19.1s 37 τ=0.05: 0.1129
+19.1s 38 τ=0.1: 0.2183
+19.1s 39 [gate1] frac<0.01=0.0230 → PASS
+19.1s 40 
+19.1s 41 [gate1] octahedral (24 rotations, exact permute):
+19.7s 42 e1: max_signed=3.81e-03 (tol 0.01) max_flip=0.0019 → PASS
+19.7s 43 e2: max_signed=3.81e-03 (tol 0.01) max_flip=0.0019 → PASS
+19.7s 44 n: max_signed=-3.54e-08 (tol 0.0001) max_flip=0.0000 → PASS
+19.7s 45 tangent_fb: max=0.0000 → PASS
+19.7s 46 weak_n: 0.0107  weak_e1: 0.0000
+19.7s 47 
+19.7s 48 [gate1] generic SO(3) (6 rots, direct tensor rotation):
+19.7s 49 e1: unsigned=-7.64e-08 signed=-7.64e-08 (tol 0.01) flip=0.0000 → PASS
+19.7s 50 e2: unsigned=-7.40e-08 signed=-7.40e-08 (tol 0.01) flip=0.0000 → PASS
+19.7s 51 n: unsigned=-6.57e-08 signed=-6.57e-08 (tol 0.0001) flip=0.0000 → PASS
+19.7s 52 tangent_fb: mean=0.0000 → PASS
+19.7s 53 weak_n: 0.0106  weak_e1: 0.0000
+19.7s 54 
+19.7s 55 [GATE 1] ✓ PASS
+20.0s 56 
+20.0s 57 ======================================================================
+20.0s 58 GATE 2 — DEALIAS
+20.0s 59 ======================================================================
+20.0s 60 [gate2] kept=4169/32768  (sphere vol ≈ 4188, exact ball=4169)
+20.0s 61 [GATE 2] ✓ PASS
+20.0s 62 
+20.0s 63 ======================================================================
+20.0s 64 GATE 3 — SOLVER
+20.0s 65 ======================================================================
+20.0s 66 [gate3] E(0)=0.1889 E(1)=0.1889 E(9)=0.1888
+20.0s 67 [gate3] max div(u)=6.58e-07  max div(b)=3.94e-07
+20.3s 68 [gate3] stress Re=2400 Rm=2400 finite=True max_div(u)=6.52e-07 max_div(B)=3.88e-07 -> PASS
+20.3s 69 [gate3] stress Re=3000 Rm=3000 finite=True max_div(u)=6.55e-07 max_div(B)=3.87e-07 -> PASS
+20.8s 70 [gate3] stress Re=3000 Rm=600 finite=True max_div(u)=6.96e-07 max_div(B)=3.66e-07 -> PASS
+20.8s 71 [gate3] stress Re=600 Rm=3000 finite=True max_div(u)=6.64e-07 max_div(B)=3.95e-07 -> PASS
+20.8s 72 [gate3] decay=True div_free=True finite=True
+20.8s 73 [GATE 3] ✓ PASS
+21.0s 74 
+21.0s 75 ======================================================================
+21.0s 76 GATE 4 — RESHAPE
+21.0s 77 ======================================================================
+21.6s 78 [gate4] correct=True buggy_ok=True differ=True id_loss=2.57e-15 swap=1.7303
+21.6s 79 [GATE 4] ✓ PASS
+21.6s 80 
+21.6s 81 ======================================================================
+21.6s 82 GATE 5 — OVERFIT
+21.6s 83 ======================================================================
+29.8s 84 it   0/400: loss=2.3790e+02 u_rel=1.0106e+00 b_rel=9.8403e-01
+94.9s 85 it  25/400: loss=4.3526e+00 u_rel=1.2991e+00 b_rel=2.3362e-01
+159.9s 86 it  50/400: loss=2.4591e+00 u_rel=7.4282e-01 b_rel=1.4202e-01
+224.6s 87 it  75/400: loss=1.2476e+00 u_rel=3.1506e-01 b_rel=9.6861e-02
+289.4s 88 it 100/400: loss=6.1011e-01 u_rel=1.9659e-01 b_rel=6.7847e-02
+354.1s 89 it 125/400: loss=3.6904e-01 u_rel=1.7210e-01 b_rel=5.4046e-02
+418.8s 90 it 150/400: loss=2.5007e-01 u_rel=1.5346e-01 b_rel=4.3060e-02
+483.4s 91 it 175/400: loss=2.1823e-01 u_rel=1.4173e-01 b_rel=3.5471e-02
+548.2s 92 it 200/400: loss=1.3504e-01 u_rel=1.3142e-01 b_rel=2.9878e-02
+612.8s 93 it 225/400: loss=1.3148e-01 u_rel=1.2350e-01 b_rel=2.5964e-02
+677.6s 94 it 250/400: loss=1.0857e-01 u_rel=1.1592e-01 b_rel=2.3019e-02
+742.2s 95 it 275/400: loss=8.0183e-02 u_rel=1.0933e-01 b_rel=2.0817e-02
+807.0s 96 it 300/400: loss=6.2559e-02 u_rel=1.0298e-01 b_rel=1.9268e-02
+872.0s 97 it 325/400: loss=5.9342e-02 u_rel=9.7666e-02 b_rel=1.7988e-02
+938.0s 98 it 350/400: loss=4.9118e-02 u_rel=9.3979e-02 b_rel=1.6937e-02
+1004.6s 99 it 375/400: loss=5.1578e-02 u_rel=8.9761e-02 b_rel=1.6182e-02
+1068.1s 100 it 399/400: loss=5.5804e-02 u_rel=8.5821e-02 b_rel=1.5595e-02
+1068.3s 101 [gate5] block means (it/25): 24.777 3.446 1.820 0.864 0.464 0.303 0.213 0.173 0.138 0.123 0.096 0.084 0.065 0.065 0.060 0.049
+1068.3s 102 [gate5] uptick it 360->361: 4.7341e-02 -> 7.9066e-02 (+67.01%)
+1068.3s 103 [gate5] uptick it 355->356: 4.2002e-02 -> 7.4171e-02 (+76.59%)
+1068.3s 104 [gate5] uptick it 336->337: 4.2290e-02 -> 8.6754e-02 (+105.14%)
+1068.3s 105 [gate5] reduction=4263.1x (min 50) u_rel=8.5821e-02 (max 0.1) b_rel=1.5595e-02 (max 0.1) block-mono=True worst-uptick=105.1402% finite=True
+1068.3s 106 [GATE 5] ✓ PASS
+1068.6s 107 
+1068.6s 108 ======================================================================
+1068.6s 109 GATE 6 — PAIRED-ROTATION
+1068.6s 110 ======================================================================
+1068.6s 111 [gate6] octahedral rotation #7 (det=1.000)
+1073.6s 112 [gate6] L_orig=2.522280e+02 L_rot=2.522285e+02 ratio=1.000002
+1073.6s 113 [gate6] max grad rel_L2=5.6358e-03 (worst: blocks.0.k_proj.bias)
+1073.6s 114 blocks.0.k_proj.bias: 5.6358e-03
+1073.6s 115 blocks.0.k_proj.weight: 2.7021e-03
+1073.6s 116 blocks.0.q_proj.weight: 2.5595e-03
+1073.6s 117 in_proj.bias: 2.5004e-03
+1073.6s 118 blocks.0.q_proj.bias: 2.4565e-03
+1073.8s 119 [gate6] float64 memory mode: checkpointing=True chunk=128
+1089.1s 120 [gate6] float64 cross-check: ratio_d=1.000e+00 max_grad_rel=4.585e-09 (worst: blocks.0.k_proj.bias) → PASS (tol 1e-6 / 1e-4)
+1089.1s 121 [gate6] loss_ok=True grad_ok=True
+1089.1s 122 [GATE 6] ✓ PASS
+1089.5s 123 
+1089.5s 124 ======================================================================
+1089.5s 125 ALL SIX GATES PASSED — PROCEEDING TO TRAINING
+1089.5s 126 ======================================================================
+1089.5s 127 [data] tensor-only host-memory estimate=6.47 GiB for 736 trajectories (Python/runtime overhead excluded)
+1089.5s 128 
+1089.5s 129 [data] generating the full Re x Rm training grid...
+1140.7s 130 [data] generating validation set...
+1153.5s 131 [data] generating hard held-out regimes=[(3000.0, 3000.0), (3000.0, 600.0), (600.0, 3000.0)]...
+1164.7s 132 [data] seeded IC perturbation=0.1; duplicate initial states rejected
+1164.7s 133 [data] train=512 (32/regime x 16 regimes) val=128 (8/regime) held=96 (32/regime x 3 hard regimes)
+1164.7s 134 
+1164.7s 135 ======================================================================
+1164.7s 136 TRAINING
+1164.7s 137 ======================================================================
+1164.7s 138 [train] params=425,478
+1164.7s 139 [train] regimes=16 train=512 val=128 held=96; steps/epoch=256; K schedule=[(10, 1), (10, 2), (15, 3), (15, 5), (15, 8)]; LR warmup=5 epochs -> cosine
+2003.4s 140 ep 000/65 K=1 grad=truncated | train=5.1097e+01 val_K1=7.3264e+00 val_trajectories=64 lr=8.40e-05 | u=1.519e+00 b=2.082e+00 | Im/Re=[0.991, 0.985, 1.009, 1.0] | anchor_fb=0.00% tangent_fb=0.00% weak_n=1.26% | 839s
+5307.3s 141 ep 004/65 K=1 grad=truncated | train=8.4320e-01 val_K1=8.8659e-01 val_trajectories=64 lr=3.00e-04 | u=4.910e-02 b=8.302e-04 | Im/Re=[0.984, 0.992, 0.988, 0.975] | anchor_fb=0.00% tangent_fb=0.00% weak_n=1.26% | 850s
+8564.4s 142 ep 008/65 K=1 grad=truncated | train=6.6523e-01 val_K1=7.9769e-01 val_trajectories=64 lr=2.97e-04 | u=3.728e-02 b=2.352e-04 | Im/Re=[0.99, 0.991, 0.991, 0.965] | anchor_fb=0.00% tangent_fb=0.00% weak_n=1.26% | 837s
+14289.8s 143 ep 012/65 K=2 grad=truncated | train=9.5278e-01 val_K2=9.7275e-01 val_trajectories=64 lr=2.87e-04 | u=7.144e-02 b=4.474e-04 | Im/Re=[0.993, 1.013, 1.0, 0.977] | anchor_fb=0.00% tangent_fb=0.00% weak_n=1.02% | 1681s
+20784.0s 144 ep 016/65 K=2 grad=truncated | train=8.4234e-01 val_K2=8.7552e-01 val_trajectories=64 lr=2.71e-04 | u=6.485e-02 b=2.850e-04 | Im/Re=[0.999, 0.996, 0.998, 0.979] | anchor_fb=0.00% tangent_fb=0.00% weak_n=1.01% | 1668s
+28125.6s 145 ep 020/65 K=3 grad=truncated | train=9.8809e-01 val_K3=1.0118e+00 val_trajectories=64 lr=2.50e-04 | u=8.887e-02 b=5.267e-04 | Im/Re=[1.014, 0.988, 0.999, 0.986] | anchor_fb=0.00% tangent_fb=0.00% weak_n=1.07% | 2500s
+37863.4s 146 ep 024/65 K=3 grad=truncated | train=8.8452e-01 val_K3=8.9806e-01 val_trajectories=64 lr=2.25e-04 | u=8.130e-02 b=4.230e-04 | Im/Re=[1.002, 0.987, 0.981, 0.994] | anchor_fb=0.00% tangent_fb=0.00% weak_n=1.12% | 2498s
+43208.8s 147 Timeout waiting for execute reply (43200s).
+43212.7s 148 Traceback (most recent call last):
+43212.7s 149 File "/usr/local/lib/python3.13/dist-packages/nbclient/client.py", line 730, in _async_poll_for_reply
+43212.7s 150 msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+43212.7s 151 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43212.7s 152 File "/usr/local/lib/python3.13/dist-packages/nbclient/util.py", line 96, in ensure_async
+43212.7s 153 result = await obj
+43212.7s 154 ^^^^^^^^^
+43212.7s 155 File "/usr/local/lib/python3.13/dist-packages/jupyter_client/channels.py", line 230, in get_msg
+43212.7s 156 raise Empty
+43212.7s 157 _queue.Empty
+43212.7s 158 
+43212.7s 159 During handling of the above exception, another exception occurred:
+43212.7s 160 
+43212.7s 161 Traceback (most recent call last):
+43212.7s 162 File "<string>", line 1, in <module>
+43212.7s 163 import sys;import papermill as pm;pm.execute_notebook("__notebook__.ipynb","__notebook__.ipynb",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)
+43212.7s 164 ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43212.7s 165 File "/usr/local/lib/python3.13/dist-packages/papermill/execute.py", line 116, in execute_notebook
+43212.7s 166 nb = papermill_engines.execute_notebook_with_engine(
+43212.7s 167 engine_name,
+43212.7s 168 ...<9 lines>...
+43212.7s 169 **engine_kwargs,
+43212.7s 170 )
+43212.7s 171 File "/usr/local/lib/python3.13/dist-packages/papermill/engines.py", line 49, in execute_notebook_with_engine
+43212.7s 172 return self.get_engine(engine_name).execute_notebook(nb, kernel_name, **kwargs)
+43212.7s 173 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43212.7s 174 File "/usr/local/lib/python3.13/dist-packages/papermill/engines.py", line 371, in execute_notebook
+43212.7s 175 cls.execute_managed_notebook(nb_man, kernel_name, log_output=log_output, **kwargs)
+43212.7s 176 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43212.7s 177 File "/usr/local/lib/python3.13/dist-packages/papermill/engines.py", line 443, in execute_managed_notebook
+43212.7s 178 return PapermillNotebookClient(nb_man, **final_kwargs).execute()
+43212.7s 179 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+43212.7s 180 File "/usr/local/lib/python3.13/dist-packages/papermill/clientwrap.py", line 45, in execute
+43212.7s 181 self.papermill_execute_cells()
+43212.7s 182 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+43212.7s 183 File "/usr/local/lib/python3.13/dist-packages/papermill/clientwrap.py", line 72, in papermill_execute_cells
+43212.7s 184 self.execute_cell(cell, index)
+43212.7s 185 ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+43212.7s 186 File "/usr/local/lib/python3.13/dist-packages/nbclient/util.py", line 84, in wrapped
+43212.7s 187 return just_run(coro(*args, **kwargs))
+43212.7s 188 File "/usr/local/lib/python3.13/dist-packages/nbclient/util.py", line 62, in just_run
+43212.7s 189 return loop.run_until_complete(coro)
+43212.7s 190 ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+43212.7s 191 File "/usr/lib/python3.13/asyncio/base_events.py", line 726, in run_until_complete
+43212.7s 192 return future.result()
+43212.7s 193 ~~~~~~~~~~~~~^^
+43212.7s 194 File "/usr/local/lib/python3.13/dist-packages/nbclient/client.py", line 949, in async_execute_cell
+43212.7s 195 exec_reply = await self.task_poll_for_reply
+43212.7s 196 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43212.7s 197 File "/usr/local/lib/python3.13/dist-packages/nbclient/client.py", line 754, in _async_poll_for_reply
+43212.7s 198 await self._async_handle_timeout(timeout, cell)
+43212.7s 199 File "/usr/local/lib/python3.13/dist-packages/nbclient/client.py", line 801, in _async_handle_timeout
+43212.7s 200 raise CellTimeoutError.error_from_timeout_and_cell(
+43212.7s 201 "Cell execution timed out", timeout, cell
+43212.7s 202 )
+43212.7s 203 nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 43200 seconds.
+43212.7s 204 The message was: Cell execution timed out.
+43212.7s 205 Here is a preview of the cell contents:
+43212.7s 206 -------------------
+43212.7s 207 ['# =================================================================', '# ALIENX 3D MHD — SIX-GATE PROTOCOL + TRAINING + ABLATIONS', '# v8: D threshold relaxed (float32 spectral Hessian @ G=32)', '#     E pass on |cos|>0.99 (flip is expected from eigh)', '#     Gate 6 float64 OOM fix + resumable gate-5 cache']
+43212.7s 208 ...
+43212.7s 209 ['    hf_export(plots)', '    print("\\n" + "="*70); print("COMPLETE"); print(f"best_val: {best_val:.4e}"); print(f"results: {RESULTS_PATH}")', '', 'if __name__ == "__main__":', '    main()']
+43212.7s 210 -------------------
+43212.7s 211 

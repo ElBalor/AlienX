@@ -1,0 +1,13 @@
+[Train] Generating Trefoil Knot data...
+[Train] Starting 30 epochs...
+  -> Epoch 00 | Loss: 0.90726
+  -> Epoch 05 | Loss: 0.20922
+  -> Epoch 10 | Loss: 0.13306
+  -> Epoch 15 | Loss: 0.10865
+  -> Epoch 20 | Loss: 0.09558
+  -> Epoch 25 | Loss: 0.08376
+[Train] Training complete. Launching Gradio app...
+Colab notebook detected. To show errors in colab notebook, set debug=True in launch()
+* Running on public URL: https://6dc499d98e6a765177.gradio.live
+
+This share link is temporary and will last for up to 1 week (best effort). For free permanent hosting and GPU upgrades, run `gradio deploy` from the terminal in the working directory to deploy to Hugging Face Spaces (https://huggingface.co/spaces)

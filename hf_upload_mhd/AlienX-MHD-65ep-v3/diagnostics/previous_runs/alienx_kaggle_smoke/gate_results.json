@@ -1,0 +1,215 @@
+{
+  "run_metadata": {
+    "protocol_id": "alienx_mhd_hard_regimes_k_unroll_v1",
+    "run_kind": "smoke_or_custom_run",
+    "grid": 4,
+    "seed": 7,
+    "train_per_regime": 1,
+    "val_per_regime": 1,
+    "heldout_per_regime": 1,
+    "snapshots": 12,
+    "dt": 0.01,
+    "ic_perturbation": 0.1,
+    "gate5_iterations": 60,
+    "gate5_max_block_rise": 1.35,
+    "epochs_by_k": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "5": 1,
+      "8": 1
+    },
+    "steps_per_epoch": 2,
+    "lr_warmup_epochs": 5,
+    "frame_eigh_chunk": 256,
+    "qsa_chunk": 128,
+    "training_step_checkpointing": true,
+    "validation_unroll_per_regime": 1,
+    "validation_interval": 1,
+    "activation_checkpointing": "auto",
+    "k_gradient_mode": "truncated",
+    "re_values": [
+      300.0,
+      600.0,
+      1200.0,
+      2400.0
+    ],
+    "rm_values": [
+      300.0,
+      600.0,
+      1200.0,
+      2400.0
+    ],
+    "train_regimes": [
+      [
+        300.0,
+        300.0
+      ],
+      [
+        300.0,
+        600.0
+      ],
+      [
+        300.0,
+        1200.0
+      ],
+      [
+        300.0,
+        2400.0
+      ],
+      [
+        600.0,
+        300.0
+      ],
+      [
+        600.0,
+        600.0
+      ],
+      [
+        600.0,
+        1200.0
+      ],
+      [
+        600.0,
+        2400.0
+      ],
+      [
+        1200.0,
+        300.0
+      ],
+      [
+        1200.0,
+        600.0
+      ],
+      [
+        1200.0,
+        1200.0
+      ],
+      [
+        1200.0,
+        2400.0
+      ],
+      [
+        2400.0,
+        300.0
+      ],
+      [
+        2400.0,
+        600.0
+      ],
+      [
+        2400.0,
+        1200.0
+      ],
+      [
+        2400.0,
+        2400.0
+      ]
+    ],
+    "held_out_regimes": [
+      [
+        3000.0,
+        3000.0
+      ],
+      [
+        3000.0,
+        600.0
+      ],
+      [
+        600.0,
+        3000.0
+      ]
+    ],
+    "device": "cuda",
+    "torch_version": "2.8.0+cu126"
+  },
+  "gates": {
+    "gate1_frame_equivariance": {
+      "passed": true,
+      "data": {
+        "degen_frac": 0.010416666977107525,
+        "oct_pass": true,
+        "gen_pass": true,
+        "rt_floor": 1e-06,
+        "tangent_fb_oct": 0.0,
+        "tangent_fb_gen": 0.0
+      }
+    },
+    "gate2_dealias": {
+      "passed": true,
+      "data": {
+        "kept": 7,
+        "expect": 4
+      }
+    },
+    "gate3_solver_physics": {
+      "passed": true,
+      "data": {
+        "E0": 0.18623481690883636,
+        "E1": 0.18622754514217377,
+        "max_div_u": 4.483933224719294e-08,
+        "max_div_b": 0.0,
+        "stress_cases": [
+          {
+            "re": 2400.0,
+            "rm": 2400.0,
+            "finite": true,
+            "max_div_u": 2.1456372678585467e-08,
+            "max_div_b": 0.0,
+            "passed": true
+          },
+          {
+            "re": 3000.0,
+            "rm": 3000.0,
+            "finite": true,
+            "max_div_u": 2.1907608172000437e-08,
+            "max_div_b": 0.0,
+            "passed": true
+          },
+          {
+            "re": 3000.0,
+            "rm": 600.0,
+            "finite": true,
+            "max_div_u": 4.02012290123821e-09,
+            "max_div_b": 0.0,
+            "passed": true
+          },
+          {
+            "re": 600.0,
+            "rm": 3000.0,
+            "finite": true,
+            "max_div_u": 4.906549477823319e-08,
+            "max_div_b": 0.0,
+            "passed": true
+          }
+        ]
+      }
+    },
+    "gate4_reshape": {
+      "passed": true,
+      "data": {
+        "identity": 3.8547153881497004e-16,
+        "swap": 1.9971952438354492
+      }
+    },
+    "gate5_overfit": {
+      "passed": true,
+      "data": {
+        "reduction": 68.77896760637643,
+        "u_rel": 0.5758452415466309,
+        "b_rel": 0.15522395074367523,
+        "block_monotonic": true,
+        "worst_uptick": 0.23722794317711193,
+        "finite": true
+      }
+    },
+    "gate6_paired_rotation": {
+      "passed": true,
+      "data": {
+        "loss_ratio": 0.9999994565205163,
+        "max_grad_rel": 0.00015577898011542857,
+        "worst_param": "blocks.2.k_proj.weight"
+      }
+    }
+  }
+}

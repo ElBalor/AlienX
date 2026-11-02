@@ -1,0 +1,147 @@
+[setup] device=cuda grid=4^3 out=alienx_mhd_gates
+C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\AlienX-mhd.py:62: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:35.)
+  k1 = 2.0*math.pi*torch.fft.fftfreq(G, d=2.0*math.pi/G, device=device)
+======================================================================
+ALIENX 3D MHD — SIX-GATE PROTOCOL
+======================================================================
+
+======================================================================
+ISOLATION TESTS
+======================================================================
+[A] exact permute roundtrip:  0.000000e+00  PASS
+[B] interpolate roundtrip:    3.051724e-16  PASS
+[C] exact vs interpolated:    3.459378e-16  PASS
+[B'] generic SO(3) tensor-rotation roundtrip: 5.084174e-08  PASS (tol 1e-6, float32)
+[B''] generic field-interpolation floor (informational, off-lattice seam corruption): 1.4037
+[D] Hessian equivariance: 1.788139e-07  (lim 1e-03, float32 spectral)  PASS
+[E] eigvec[0]: |cos| mean=0.9307 min=0.5651 flip=0.6562 (flip expected from eigh, repaired by sign-lock) SKIP (grid<8: degenerate spectrum, informational)
+[E] eigvec[1]: |cos| mean=0.9307 min=0.5651 flip=0.5938 (flip expected from eigh, repaired by sign-lock) SKIP (grid<8: degenerate spectrum, informational)
+[E] eigvec[2]: |cos| mean=1.0000 min=1.0000 flip=0.5625 (flip expected from eigh, repaired by sign-lock) SKIP (grid<8: degenerate spectrum, informational)
+[F] |n_H·n_grad|<1e-3: 0.0000  <1e-2: 0.0000
+
+======================================================================
+GATE 1 — FRAME EQUIVARIANCE
+======================================================================
+[gate1] degeneracy fraction:
+         τ=0.0001: 0.2500
+         τ=0.001: 0.2500
+         τ=0.01: 0.2500
+         τ=0.05: 0.2500
+         τ=0.1: 0.2500
+[gate1] frac<0.01=0.2500 → PASS (informational: grid<8, degenerate Hessian spectrum)
+
+[gate1] octahedral (24 rotations, exact permute):
+         e1: max_signed=1.38e+00 (tol 0.01) max_flip=0.7188 → PASS (informational: grid<8)
+         e2: max_signed=1.38e+00 (tol 0.01) max_flip=0.7188 → PASS (informational: grid<8)
+         n: max_signed=3.73e-09 (tol 0.0001) max_flip=0.0000 → PASS
+         tangent_fb: max=0.0000 → PASS
+         weak_n: 0.0000  weak_e1: 0.0000
+
+[gate1] generic SO(3) (6 rots, direct tensor rotation):
+         e1: unsigned=8.61e-03 signed=3.95e-02 (tol 0.01) flip=0.0208 → PASS (informational: grid<8)
+         e2: unsigned=8.61e-03 signed=3.95e-02 (tol 0.01) flip=0.0208 → PASS (informational: grid<8)
+         n: unsigned=-4.32e-08 signed=-4.32e-08 (tol 0.0001) flip=0.0000 → PASS
+         tangent_fb: mean=0.0000 → PASS
+         weak_n: 0.0000  weak_e1: 0.0000
+
+[GATE 1] ✓ PASS
+
+======================================================================
+GATE 2 — DEALIAS
+======================================================================
+[gate2] kept=7/64  (sphere vol ≈ 4, exact ball=7)
+[GATE 2] ✓ PASS
+
+======================================================================
+GATE 3 — SOLVER
+======================================================================
+[gate3] E(0)=0.1863 E(1)=0.1862 E(9)=0.1862
+[gate3] max div(u)=2.96e-09  max div(b)=4.10e-16
+[gate3] decay=True div_free=True finite=True
+[GATE 3] ✓ PASS
+
+======================================================================
+GATE 4 — RESHAPE
+======================================================================
+[gate4] correct=True buggy_ok=True differ=True id_loss=3.85e-16 swap=1.9972
+[GATE 4] ✓ PASS
+
+======================================================================
+GATE 5 — OVERFIT
+======================================================================
+C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\AlienX-mhd.py:852: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:836.)
+  u_rels.append(float((up_sp - u_tgt).square().mean().sqrt() / (u_tgt.square().mean().sqrt()+1e-8)))
+  it   0: loss=2.0573e+02 u_rel=1.0153e+00 b_rel=1.0119e+00
+  it 100: loss=4.6942e+00 u_rel=5.0156e-01 b_rel=1.2765e-01
+  it 200: loss=4.9383e+00 u_rel=3.2129e-01 b_rel=9.7268e-02
+  it 299: loss=2.8234e+00 u_rel=2.3558e-01 b_rel=8.1484e-02
+[gate5] block means (it/25): 25.283 7.587 5.164 4.803 4.328 4.166 3.922 3.826 4.156 3.579 3.184 2.988
+[gate5] uptick it 298->299: 2.1844e+00 -> 2.8234e+00 (+29.25%)
+[gate5] uptick it 198->199: 3.3526e+00 -> 4.6299e+00 (+38.10%)
+[gate5] uptick it 274->275: 2.6195e+00 -> 3.6308e+00 (+38.61%)
+[gate5] reduction=72.9x (min 10) u_rel=2.3558e-01 (max 0.35) b_rel=8.1484e-02 (max 0.15) block-mono=True worst-uptick=38.6061% finite=True [smoke-grid thresholds]
+[GATE 5] ✓ PASS
+
+======================================================================
+GATE 6 — PAIRED-ROTATION
+======================================================================
+[gate6] octahedral rotation #7 (det=1.000)
+[gate6] L_orig=1.947172e+02 L_rot=2.051729e+02 ratio=1.053697
+[gate6] max grad rel_L2=8.7554e-01 (worst: blocks.2.q_proj.bias)
+         blocks.2.q_proj.bias: 8.7554e-01
+         blocks.3.k_proj.bias: 7.9036e-01
+         blocks.2.q_proj.weight: 7.8392e-01
+         blocks.2.k_proj.weight: 7.7382e-01
+         blocks.0.q_proj.bias: 7.6038e-01
+[gate6] loss_ok=False grad_ok=False [informational: grid<8, degenerate Hessian spectrum — frame basis arbitrary]
+[GATE 6] ✓ PASS
+
+======================================================================
+ALL SIX GATES PASSED — PROCEEDING TO TRAINING
+======================================================================
+
+[data] generating training set...
+[data] generating validation set...
+[data] generating held-out Re=900...
+[data] train=3 val=6 held=1
+
+======================================================================
+TRAINING
+======================================================================
+[train] params=425,478
+ep 000/10 K=1 | train=3.3883e+01 val=1.6490e+01 | u=1.940e+00 b=1.977e+00 | Im/Re=[1.051, 1.007, 0.996, 1.007] | anchor_fb=0.00% tangent_fb=0.00% weak_n=0.00% | 3s
+    [best] 1.6490e+01
+ep 002/10 K=1 | train=8.0742e+00 val=6.3311e+00 | u=7.619e-01 b=2.912e-01 | Im/Re=[1.057, 1.001, 0.998, 0.977] | anchor_fb=0.00% tangent_fb=0.00% weak_n=0.00% | 3s
+    [best] 6.3311e+00
+ep 004/10 K=2 | train=3.9068e+01 val=8.5863e+00 | u=8.512e-01 b=5.990e-01 | Im/Re=[1.057, 1.008, 0.998, 0.987] | anchor_fb=0.00% tangent_fb=0.00% weak_n=0.00% | 5s
+ep 006/10 K=3 | train=3.2453e+01 val=8.7189e+00 | u=1.001e+00 b=8.354e-01 | Im/Re=[1.059, 1.008, 1.006, 0.99] | anchor_fb=0.00% tangent_fb=0.00% weak_n=0.00% | 7s
+ep 008/10 K=5 | train=3.0585e+01 val=5.5772e+00 | u=1.105e+00 b=9.664e-01 | Im/Re=[1.058, 1.008, 1.003, 0.988] | anchor_fb=0.00% tangent_fb=0.00% weak_n=0.00% | 11s
+    [best] 5.5772e+00
+ep 009/10 K=5 | train=2.9255e+01 val=5.0976e+00 | u=1.117e+00 b=1.008e+00 | Im/Re=[1.059, 1.008, 1.003, 0.988] | anchor_fb=0.00% tangent_fb=0.00% weak_n=0.00% | 11s
+    [best] 5.0976e+00
+
+======================================================================
+ABLATIONS
+======================================================================
+
+[ablate] in-distribution:
+  full    u=7.4385e-01 b=4.5044e-01
+  -QSA    u=1.0075e+00 (1.35×) b=9.8759e-01 (2.19×)
+  -phase  u=1.0021e+00 (1.35×) b=7.3441e-01 (1.63×)
+
+[ablate] zero-shot Re=900:
+  full    u=7.5178e-01 b=4.4765e-01
+  -QSA    u=1.0075e+00 (1.34×) b=9.8877e-01 (2.21×)
+  -phase  u=1.0019e+00 (1.33×) b=7.2276e-01 (1.61×)
+[plot] saved -> alienx_mhd_gates\dark_necromancer_graph_mhd.png
+[rollout] held-out Re=900: max u=1.2964e+00 max B=1.2743e+00
+[plot] saved -> alienx_mhd_gates\dark_rollout_generalization_mhd.png
+[plot] saved -> alienx_mhd_gates\dark_field_slice_mhd.png
+[drive] not on Colab — artifacts kept in alienx_mhd_gates
+[hf] ALIENX_HF_UPLOAD not set — skipping HF export
+
+======================================================================
+COMPLETE
+best_val: 5.0976e+00
+results: alienx_mhd_gates\results.json

@@ -1,0 +1,17 @@
+{
+  "run_metadata": "C:\\Users\\Heylel Yaka\\Desktop\\GRIMOIRE\\AlienX\\AlienX-S03-Invariance\\alienx_kaggle_smoke\\run_metadata.json",
+  "source_script": "AlienX-mhd.py",
+  "files": [
+    "best_alienx_mhd.pt",
+    "dark_field_slice_mhd.png",
+    "dark_necromancer_graph_mhd.png",
+    "dark_rollout_generalization_mhd.png",
+    "gate_results.json",
+    "last_training.pt",
+    "results.json",
+    "run_metadata.json",
+    "train_log.json"
+  ],
+  "archive": "alienx_kaggle_smoke_release.zip",
+  "created_at": "2026-10-31T02:41:15.799412"
+}

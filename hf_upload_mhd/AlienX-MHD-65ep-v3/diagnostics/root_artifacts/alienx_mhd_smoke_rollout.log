@@ -1,0 +1,82 @@
+[setup] device=cuda grid=32^3 out=alienx_mhd_gates
+C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\AlienX-mhd.py:62: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:35.)
+  k1 = 2.0*math.pi*torch.fft.fftfreq(G, d=2.0*math.pi/G, device=device)
+======================================================================
+ALIENX 3D MHD — SIX-GATE PROTOCOL
+======================================================================
+
+======================================================================
+ISOLATION TESTS
+======================================================================
+[A] exact permute roundtrip:  0.000000e+00  PASS
+[B] interpolate roundtrip:    1.152207e-15  PASS
+[C] exact vs interpolated:    1.153607e-15  PASS
+[B'] generic SO(3) tensor-rotation roundtrip: 6.958585e-08  PASS (tol 1e-6, float32)
+[B''] generic field-interpolation floor (informational, off-lattice seam corruption): 1.3464
+[D] Hessian equivariance: 4.464984e-04  (lim 1e-03, float32 spectral)  PASS
+[E] eigvec[0]: |cos| mean=1.0000 min=0.9996 flip=0.6549 (flip expected from eigh, repaired by sign-lock) ->
+[E] eigvec[1]: |cos| mean=1.0000 min=0.7594 flip=0.6240 (flip expected from eigh, repaired by sign-lock) ->
+[E] eigvec[2]: |cos| mean=1.0000 min=0.7594 flip=0.6627 (flip expected from eigh, repaired by sign-lock) ->
+[F] |n_H·n_grad|<1e-3: 0.0131  <1e-2: 0.0287
+
+======================================================================
+GATE 1 — FRAME EQUIVARIANCE
+======================================================================
+[gate1] degeneracy fraction:
+         τ=0.0001: 0.0000
+         τ=0.001: 0.0000
+         τ=0.01: 0.0003
+         τ=0.05: 0.0083
+         τ=0.1: 0.0370
+[gate1] frac<0.01=0.0003 → PASS
+
+[gate1] octahedral (24 rotations, exact permute):
+         e1: max_signed=4.78e-03 (tol 0.01) max_flip=0.0024 → PASS
+         e2: max_signed=4.78e-03 (tol 0.01) max_flip=0.0024 → PASS
+         n: max_signed=-3.54e-08 (tol 0.0001) max_flip=0.0000 → PASS
+         tangent_fb: max=0.0000 → PASS
+         weak_n: 0.0219  weak_e1: 0.0000
+
+[gate1] generic SO(3) (6 rots, direct tensor rotation):
+         e1: unsigned=-7.54e-08 signed=-7.54e-08 (tol 0.01) flip=0.0000 → PASS
+         e2: unsigned=-7.46e-08 signed=-7.46e-08 (tol 0.01) flip=0.0000 → PASS
+         n: unsigned=-6.60e-08 signed=-6.60e-08 (tol 0.0001) flip=0.0000 → PASS
+         tangent_fb: mean=0.0000 → PASS
+         weak_n: 0.0215  weak_e1: 0.0000
+
+[GATE 1] ✓ PASS
+
+======================================================================
+GATE 2 — DEALIAS
+======================================================================
+[gate2] kept=4169/32768  (sphere vol ≈ 4188)
+[GATE 2] ✓ PASS
+
+======================================================================
+GATE 3 — SOLVER
+======================================================================
+[gate3] E(0)=0.1862 E(1)=0.1862 E(9)=0.1862
+[gate3] max div(u)=6.49e-07  max div(b)=3.73e-07
+[gate3] decay=True div_free=True finite=True
+[GATE 3] ✓ PASS
+
+======================================================================
+GATE 4 — RESHAPE
+======================================================================
+[gate4] correct=True buggy_ok=True differ=True id_loss=2.53e-15 swap=1.7552
+[GATE 4] ✓ PASS
+
+======================================================================
+GATE 5 — OVERFIT
+======================================================================
+C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\AlienX-mhd.py:817: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:836.)
+  u_rels.append(float((up_sp - u_tgt).square().mean().sqrt() / (u_tgt.square().mean().sqrt()+1e-8)))
+  it   0: loss=2.2393e+02 u_rel=1.0120e+00 b_rel=9.8801e-01
+  it 100: loss=5.5956e-01 u_rel=1.0267e-01 b_rel=3.9742e-02
+  it 200: loss=2.7487e-01 u_rel=5.8821e-02 b_rel=2.2769e-02
+  it 299: loss=2.8301e-01 u_rel=4.9257e-02 b_rel=2.0801e-02
+[gate5] reduction=791.2x u_rel=4.9257e-02 b_rel=2.0801e-02 block-mono=False worst-uptick=101.2708% finite=True
+[GATE 5] ✗ FAIL
+
+[ABORT] gate5_overfit failed. Fix before training.

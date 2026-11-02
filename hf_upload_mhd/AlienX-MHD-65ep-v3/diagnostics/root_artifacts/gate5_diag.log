@@ -1,0 +1,21 @@
+[setup] device=cuda grid=32^3 out=alienx_mhd_gates
+C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\AlienX-mhd.py:62: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:35.)
+  k1 = 2.0*math.pi*torch.fft.fftfreq(G, d=2.0*math.pi/G, device=device)
+
+======================================================================
+GATE 5 — OVERFIT
+======================================================================
+C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\AlienX-mhd.py:817: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:836.)
+  u_rels.append(float((up_sp - u_tgt).square().mean().sqrt() / (u_tgt.square().mean().sqrt()+1e-8)))
+  it   0: loss=2.4849e+02 u_rel=1.0048e+00 b_rel=1.0129e+00
+  it 100: loss=3.2497e-01 u_rel=7.8999e-02 b_rel=6.6788e-02
+  it 200: loss=2.4694e-01 u_rel=5.8901e-02 b_rel=2.8777e-02
+  it 299: loss=3.2236e-01 u_rel=5.7711e-02 b_rel=2.5821e-02
+[gate5] block means (it/25): 28.184 2.593 0.827 0.424 0.349 0.372 0.288 0.258 0.256 0.274 0.258 0.235
+[gate5] uptick it 133->134: 2.5438e-01 -> 4.3839e-01 (+72.33%)
+[gate5] uptick it 246->247: 1.8568e-01 -> 3.4647e-01 (+86.60%)
+[gate5] uptick it 229->230: 1.9314e-01 -> 3.6177e-01 (+87.31%)
+[gate5] reduction=770.9x u_rel=5.7711e-02 b_rel=2.5821e-02 block-mono=False worst-uptick=87.3078% finite=True
+[GATE 5] ✗ FAIL
+GATE5 OK: False {'reduction': 770.8699652902654, 'u_rel': 0.05771097540855408, 'b_rel': 0.02582142874598503, 'block_monotonic': False, 'worst_uptick': 0.8730779420712019, 'finite': True}

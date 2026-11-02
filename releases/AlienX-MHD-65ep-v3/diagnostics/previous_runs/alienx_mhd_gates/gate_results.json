@@ -1,0 +1,36 @@
+{
+  "gate1_frame_equivariance": {
+    "passed": true,
+    "data": {
+      "degen_frac": 0.029205322265625,
+      "oct_pass": true,
+      "gen_pass": true,
+      "rt_floor": 1e-06,
+      "tangent_fb_oct": 0.0,
+      "tangent_fb_gen": 0.0
+    }
+  },
+  "gate2_dealias": {
+    "passed": true,
+    "data": {
+      "kept": 4169,
+      "expect": 4188
+    }
+  },
+  "gate3_solver_physics": {
+    "passed": true,
+    "data": {
+      "E0": 0.18624985218048096,
+      "E1": 0.18624259531497955,
+      "max_div_u": 6.492135184998915e-07,
+      "max_div_b": 3.72994350072986e-07
+    }
+  },
+  "gate4_reshape": {
+    "passed": true,
+    "data": {
+      "identity": 2.5321313039503197e-15,
+      "swap": 1.7552359104156494
+    }
+  }
+}

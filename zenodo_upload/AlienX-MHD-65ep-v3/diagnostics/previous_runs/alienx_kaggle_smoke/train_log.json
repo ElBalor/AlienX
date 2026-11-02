@@ -1,0 +1,82 @@
+[
+ {
+  "ep": 0,
+  "K": 1,
+  "train": 212.31729125976562,
+  "val": 201.52179050445557,
+  "val_unroll_steps": 1,
+  "k_gradient_mode": "truncated",
+  "val_trajectories": 16,
+  "lr": 9.749999999999998e-05,
+  "im_re": [
+   1.005,
+   1.018,
+   1.012,
+   0.997
+  ]
+ },
+ {
+  "ep": 1,
+  "K": 2,
+  "train": 201.94284057617188,
+  "val": 194.35138702392578,
+  "val_unroll_steps": 2,
+  "k_gradient_mode": "truncated",
+  "val_trajectories": 16,
+  "lr": 0.00016499999999999997,
+  "im_re": [
+   1.008,
+   1.013,
+   0.999,
+   1.009
+  ]
+ },
+ {
+  "ep": 2,
+  "K": 3,
+  "train": 187.39795176188153,
+  "val": 193.3041613896688,
+  "val_unroll_steps": 3,
+  "k_gradient_mode": "truncated",
+  "val_trajectories": 16,
+  "lr": 0.00023249999999999999,
+  "im_re": [
+   1.012,
+   0.986,
+   1.012,
+   1.012
+  ]
+ },
+ {
+  "ep": 3,
+  "K": 5,
+  "train": 185.57881774902344,
+  "val": 181.82560691833496,
+  "val_unroll_steps": 5,
+  "k_gradient_mode": "truncated",
+  "val_trajectories": 16,
+  "lr": 0.0003,
+  "im_re": [
+   0.988,
+   1.005,
+   0.988,
+   0.986
+  ]
+ },
+ {
+  "ep": 4,
+  "K": 8,
+  "train": 173.73869037628174,
+  "val": 167.45576190948486,
+  "val_unroll_steps": 8,
+  "k_gradient_mode": "truncated",
+  "val_trajectories": 16,
+  "lr": 0.0,
+  "im_re": [
+   1.007,
+   0.995,
+   1.017,
+   1.023
+  ]
+ }
+]

@@ -1,0 +1,7 @@
+[setup] device=cuda grid=32^3 out=C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\hf_upload_mhd\AlienX-MHD-65ep-v3\evaluation\partial_checkpoint
+[script] revision=hard-regime-grid-k-unroll-validation-65ep-v3; f64_chunk_default=128; gate5_resume_cache=on
+C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\AlienX-mhd.py:129: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:35.)
+  k1 = 2.0*math.pi*torch.fft.fftfreq(G, d=2.0*math.pi/G, device=device)
+[data] tensor-only host-memory estimate=6.47 GiB for 736 trajectories (Python/runtime overhead excluded)
+
+[data] generating the full Re x Rm training grid...

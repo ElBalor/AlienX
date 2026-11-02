@@ -1,0 +1,19 @@
+[setup] device=cuda grid=32^3 out=alienx_mhd_gates
+C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\AlienX-mhd.py:62: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:35.)
+  k1 = 2.0*math.pi*torch.fft.fftfreq(G, d=2.0*math.pi/G, device=device)
+
+======================================================================
+GATE 6 — PAIRED-ROTATION
+======================================================================
+[gate6] octahedral rotation #7 (det=1.000)
+[gate6] L_orig=2.418433e+02 L_rot=2.418183e+02 ratio=0.999897
+[gate6] max grad rel_L2=5.5092e-02 (worst: blocks.1.k_proj.bias)
+         blocks.1.k_proj.bias: 5.5092e-02
+         blocks.3.q_proj.weight: 5.0450e-02
+         blocks.2.k_proj.bias: 4.9765e-02
+         blocks.1.k_proj.weight: 4.9650e-02
+         blocks.1.q_proj.weight: 4.8003e-02
+[gate6] float64 cross-check: ratio_d=1.000e+00 max_grad_rel=5.366e-09 (worst: blocks.0.k_proj.weight) → PASS (tol 1e-6 / 1e-4)
+[gate6] loss_ok=True grad_ok=True
+[GATE 6] ✓ PASS
+GATE6 OK: True {'loss_ratio': 0.999896652532624, 'max_grad_rel': 0.055092066526412964, 'worst_param': 'blocks.1.k_proj.bias'}

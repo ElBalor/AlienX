@@ -1,0 +1,298 @@
+{
+  "status": "partial_checkpoint_evaluation",
+  "warning": "Training stopped at the saved checkpoint before the 65-epoch K=8 release phase; this is not the final trained benchmark.",
+  "checkpoint": "C:\\Users\\Heylel Yaka\\Desktop\\GRIMOIRE\\AlienX\\AlienX-S03-Invariance\\hf_upload_mhd\\AlienX-MHD-65ep-v3\\training\\latest_resume\\run\\last_training.pt",
+  "checkpoint_next_epoch": 27,
+  "best_val_at_checkpoint": Infinity,
+  "training_log_entries": 7,
+  "gates": {
+    "run_metadata": {
+      "protocol_id": "alienx_mhd_hard_regimes_k_unroll_65ep_v3",
+      "run_kind": "full_32_cube_protocol",
+      "grid": 32,
+      "seed": 7,
+      "train_per_regime": 32,
+      "val_per_regime": 8,
+      "heldout_per_regime": 32,
+      "snapshots": 12,
+      "dt": 0.01,
+      "ic_perturbation": 0.1,
+      "gate5_iterations": 400,
+      "gate5_max_block_rise": 1.35,
+      "epochs_by_k": {
+        "1": 10,
+        "2": 10,
+        "3": 15,
+        "5": 15,
+        "8": 15
+      },
+      "steps_per_epoch": 256,
+      "lr_warmup_epochs": 5,
+      "frame_eigh_chunk": 4096,
+      "qsa_chunk": 256,
+      "training_step_checkpointing": true,
+      "validation_unroll_per_regime": 4,
+      "validation_interval": 4,
+      "activation_checkpointing": "auto",
+      "k_gradient_mode": "truncated",
+      "re_values": [
+        300.0,
+        600.0,
+        1200.0,
+        2400.0
+      ],
+      "rm_values": [
+        300.0,
+        600.0,
+        1200.0,
+        2400.0
+      ],
+      "train_regimes": [
+        [
+          300.0,
+          300.0
+        ],
+        [
+          300.0,
+          600.0
+        ],
+        [
+          300.0,
+          1200.0
+        ],
+        [
+          300.0,
+          2400.0
+        ],
+        [
+          600.0,
+          300.0
+        ],
+        [
+          600.0,
+          600.0
+        ],
+        [
+          600.0,
+          1200.0
+        ],
+        [
+          600.0,
+          2400.0
+        ],
+        [
+          1200.0,
+          300.0
+        ],
+        [
+          1200.0,
+          600.0
+        ],
+        [
+          1200.0,
+          1200.0
+        ],
+        [
+          1200.0,
+          2400.0
+        ],
+        [
+          2400.0,
+          300.0
+        ],
+        [
+          2400.0,
+          600.0
+        ],
+        [
+          2400.0,
+          1200.0
+        ],
+        [
+          2400.0,
+          2400.0
+        ]
+      ],
+      "held_out_regimes": [
+        [
+          3000.0,
+          3000.0
+        ],
+        [
+          3000.0,
+          600.0
+        ],
+        [
+          600.0,
+          3000.0
+        ]
+      ],
+      "device": "cuda",
+      "torch_version": "2.11.0+cu128"
+    },
+    "gates": {
+      "gate1_frame_equivariance": {
+        "passed": true,
+        "data": {
+          "degen_frac": 0.02296956442296505,
+          "oct_pass": true,
+          "gen_pass": true,
+          "rt_floor": 1e-06,
+          "tangent_fb_oct": 0.0,
+          "tangent_fb_gen": 0.0
+        }
+      },
+      "gate2_dealias": {
+        "passed": true,
+        "data": {
+          "kept": 4169,
+          "expect": 4188
+        }
+      },
+      "gate3_solver_physics": {
+        "passed": true,
+        "data": {
+          "E0": 0.18890169262886047,
+          "E1": 0.1888940930366516,
+          "max_div_u": 6.575211841663986e-07,
+          "max_div_b": 3.942371620269114e-07,
+          "stress_cases": [
+            {
+              "re": 2400.0,
+              "rm": 2400.0,
+              "finite": true,
+              "max_div_u": 6.51890672997979e-07,
+              "max_div_b": 3.878708128013386e-07,
+              "passed": true
+            },
+            {
+              "re": 3000.0,
+              "rm": 3000.0,
+              "finite": true,
+              "max_div_u": 6.546494546455506e-07,
+              "max_div_b": 3.8696586557307455e-07,
+              "passed": true
+            },
+            {
+              "re": 3000.0,
+              "rm": 600.0,
+              "finite": true,
+              "max_div_u": 6.959126608307997e-07,
+              "max_div_b": 3.657612239749142e-07,
+              "passed": true
+            },
+            {
+              "re": 600.0,
+              "rm": 3000.0,
+              "finite": true,
+              "max_div_u": 6.635597173954011e-07,
+              "max_div_b": 3.9520540440207697e-07,
+              "passed": true
+            }
+          ]
+        }
+      },
+      "gate4_reshape": {
+        "passed": true,
+        "data": {
+          "identity": 2.5712563910587063e-15,
+          "swap": 1.7302618026733398
+        }
+      },
+      "gate5_overfit": {
+        "passed": 1.0,
+        "data": {
+          "reduction": 4263.14578878046,
+          "u_rel": 0.08582053333520889,
+          "b_rel": 0.015594515949487686,
+          "block_monotonic": 1.0,
+          "worst_uptick": 1.0514016398807382,
+          "finite": true
+        }
+      },
+      "gate6_paired_rotation": {
+        "passed": true,
+        "data": {
+          "loss_ratio": 1.0000018148803818,
+          "max_grad_rel": 0.005635831505060196,
+          "worst_param": "blocks.0.k_proj.bias"
+        }
+      }
+    }
+  },
+  "ablations": {
+    "indist": {
+      "full": [
+        0.1824811827391386,
+        0.008660568564664572
+      ],
+      "qsa": [
+        0.956330668181181,
+        0.24515657126903534
+      ],
+      "phase": [
+        0.39130437932908535,
+        0.008878059859853238
+      ]
+    },
+    "zeroshot": {
+      "full": [
+        0.18072042862574259,
+        0.00890522093201677
+      ],
+      "qsa": [
+        0.9597534338633219,
+        0.28217533727486926
+      ],
+      "phase": [
+        0.38736872871716815,
+        0.009402048463622728
+      ]
+    }
+  },
+  "rollout": {
+    "n_trajectories": 6,
+    "held_out_regimes": [
+      [
+        3000.0,
+        3000.0
+      ],
+      [
+        3000.0,
+        600.0
+      ],
+      [
+        600.0,
+        3000.0
+      ]
+    ],
+    "rel_u_mean_by_step": [
+      0.18072042862574259,
+      0.26335885375738144,
+      0.3320819189151128,
+      0.39835600058237713,
+      0.46583378314971924,
+      0.5352448771397272,
+      0.6048101981480917,
+      0.6685686806837717,
+      0.7231574455897013,
+      0.7696138223012289,
+      0.806450347105662
+    ],
+    "rel_b_mean_by_step": [
+      0.00890522093201677,
+      0.016531099565327168,
+      0.023834711872041225,
+      0.030643746256828308,
+      0.037023267398277916,
+      0.04314587016900381,
+      0.04915715505679449,
+      0.055037805189689,
+      0.06086012783149878,
+      0.06668749824166298,
+      0.0725027285516262
+    ],
+    "rel_u_final_mean": 0.806450347105662,
+    "rel_b_final_mean": 0.0725027285516262
+  }
+}

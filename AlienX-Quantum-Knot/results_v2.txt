@@ -1,0 +1,10 @@
+AlienX Quantum Knot corrected benchmark
+=======================================
+30 epochs, 4096 particles, grid=32
+loss: 1.6296748 -> 0.0822254
+perturbation input: active
+cached deterministic inference: PASS
+slider geometry response: PASS
+slider prediction response: PASS
+phase ablation: recorded in quantum_knot_benchmark.json
+full perturbation sweep: recorded in quantum_knot_benchmark.json

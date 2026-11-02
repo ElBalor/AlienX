@@ -1,0 +1,124 @@
+{
+  "protocol_id": "alienx_mhd_hard_regimes_k_unroll_65ep_v3",
+  "run_kind": "full_32_cube_protocol",
+  "grid": 32,
+  "seed": 7,
+  "train_per_regime": 32,
+  "val_per_regime": 8,
+  "heldout_per_regime": 32,
+  "snapshots": 12,
+  "dt": 0.01,
+  "ic_perturbation": 0.1,
+  "gate5_iterations": 400,
+  "gate5_max_block_rise": 1.35,
+  "epochs_by_k": {
+    "1": 10,
+    "2": 10,
+    "3": 15,
+    "5": 15,
+    "8": 15
+  },
+  "steps_per_epoch": 256,
+  "lr_warmup_epochs": 5,
+  "frame_eigh_chunk": 4096,
+  "qsa_chunk": 256,
+  "training_step_checkpointing": true,
+  "validation_unroll_per_regime": 4,
+  "validation_interval": 4,
+  "activation_checkpointing": "auto",
+  "k_gradient_mode": "truncated",
+  "re_values": [
+    300.0,
+    600.0,
+    1200.0,
+    2400.0
+  ],
+  "rm_values": [
+    300.0,
+    600.0,
+    1200.0,
+    2400.0
+  ],
+  "train_regimes": [
+    [
+      300.0,
+      300.0
+    ],
+    [
+      300.0,
+      600.0
+    ],
+    [
+      300.0,
+      1200.0
+    ],
+    [
+      300.0,
+      2400.0
+    ],
+    [
+      600.0,
+      300.0
+    ],
+    [
+      600.0,
+      600.0
+    ],
+    [
+      600.0,
+      1200.0
+    ],
+    [
+      600.0,
+      2400.0
+    ],
+    [
+      1200.0,
+      300.0
+    ],
+    [
+      1200.0,
+      600.0
+    ],
+    [
+      1200.0,
+      1200.0
+    ],
+    [
+      1200.0,
+      2400.0
+    ],
+    [
+      2400.0,
+      300.0
+    ],
+    [
+      2400.0,
+      600.0
+    ],
+    [
+      2400.0,
+      1200.0
+    ],
+    [
+      2400.0,
+      2400.0
+    ]
+  ],
+  "held_out_regimes": [
+    [
+      3000.0,
+      3000.0
+    ],
+    [
+      3000.0,
+      600.0
+    ],
+    [
+      600.0,
+      3000.0
+    ]
+  ],
+  "device": "cuda",
+  "torch_version": "2.11.0+cu128"
+}

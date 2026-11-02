@@ -1,0 +1,119 @@
+[Train] Generating perturbed Trefoil Knot curriculum...
+[Train] Starting 0 epochs with random perturbation conditioning...
+[Train] Training complete. Launching Gradio app...
+C:\Users\Heylel Yaka\Desktop\GRIMOIRE\AlienX\AlienX-S03-Invariance\AlienX-Quantum-Knot\benchmark_quantum_knot.py:58: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:836.)
+  row["prediction_delta_from_previous"] = float((pred-prev_pred).square().mean().sqrt())
+{
+  "checkpoint": "C:\\Users\\Heylel Yaka\\Desktop\\GRIMOIRE\\AlienX\\AlienX-S03-Invariance\\AlienX-Quantum-Knot\\alienx_quantum_knot_checkpoint.pt",
+  "architecture": "SO(3) local frame + relevance-gated complex QSA + complex density head",
+  "particles": 4096,
+  "grid": 32,
+  "training_epochs": 30,
+  "loss_start": 1.1110203266143799,
+  "loss_final": 0.10440710186958313,
+  "perturbation_sweep": {
+    "0.0": {
+      "complex_mse": 0.04200359433889389,
+      "amplitude_rmse": 0.23721721768379211,
+      "phase_alignment": 0.5344172120094299,
+      "mean_amplitude": 0.1357193887233734
+    },
+    "0.25": {
+      "complex_mse": 0.041769396513700485,
+      "amplitude_rmse": 0.23765167593955994,
+      "phase_alignment": 0.58242267370224,
+      "mean_amplitude": 0.13662120699882507
+    },
+    "0.5": {
+      "complex_mse": 0.04629101976752281,
+      "amplitude_rmse": 0.2544518709182739,
+      "phase_alignment": 0.5834478139877319,
+      "mean_amplitude": 0.13261237740516663
+    },
+    "0.75": {
+      "complex_mse": 0.05033215880393982,
+      "amplitude_rmse": 0.26386889815330505,
+      "phase_alignment": 0.5480800867080688,
+      "mean_amplitude": 0.13404740393161774
+    },
+    "1.0": {
+      "complex_mse": 0.05250070244073868,
+      "amplitude_rmse": 0.2631451487541199,
+      "phase_alignment": 0.48547932505607605,
+      "mean_amplitude": 0.13857832551002502
+    }
+  },
+  "phase_input_ablation": {
+    "0.0": {
+      "complex_mse": 0.08022169768810272,
+      "amplitude_rmse": 0.24214978516101837,
+      "phase_alignment": -0.12797054648399353,
+      "mean_amplitude": 0.16286703944206238
+    },
+    "0.25": {
+      "complex_mse": 0.08397090435028076,
+      "amplitude_rmse": 0.2430485188961029,
+      "phase_alignment": -0.09941404312849045,
+      "mean_amplitude": 0.16861465573310852
+    },
+    "0.5": {
+      "complex_mse": 0.09096240997314453,
+      "amplitude_rmse": 0.2530725598335266,
+      "phase_alignment": -0.082150399684906,
+      "mean_amplitude": 0.17365294694900513
+    },
+    "0.75": {
+      "complex_mse": 0.09853257238864899,
+      "amplitude_rmse": 0.25451481342315674,
+      "phase_alignment": -0.08853255957365036,
+      "mean_amplitude": 0.18346208333969116
+    },
+    "1.0": {
+      "complex_mse": 0.10019190609455109,
+      "amplitude_rmse": 0.2563297748565674,
+      "phase_alignment": -0.07943809032440186,
+      "mean_amplitude": 0.19233009219169617
+    }
+  },
+  "temporal_sequence": [
+    {
+      "t": 0.0,
+      "complex_mse": 0.0418165847659111,
+      "phase_circulation_target": 0.07204756885766983
+    },
+    {
+      "t": 0.2,
+      "complex_mse": 0.04084596410393715,
+      "phase_circulation_target": 0.07886521518230438,
+      "prediction_delta_from_previous": 0.08078157156705856
+    },
+    {
+      "t": 0.4,
+      "complex_mse": 0.04127464443445206,
+      "phase_circulation_target": 0.08110544085502625,
+      "prediction_delta_from_previous": 0.08196521550416946
+    },
+    {
+      "t": 0.6,
+      "complex_mse": 0.04453461244702339,
+      "phase_circulation_target": 0.08503060787916183,
+      "prediction_delta_from_previous": 0.0855746865272522
+    },
+    {
+      "t": 0.8,
+      "complex_mse": 0.0479058101773262,
+      "phase_circulation_target": 0.086637943983078,
+      "prediction_delta_from_previous": 0.08710340410470963
+    },
+    {
+      "t": 1.0,
+      "complex_mse": 0.050416719168424606,
+      "phase_circulation_target": 0.0894559845328331,
+      "prediction_delta_from_previous": 0.08964015543460846
+    }
+  ],
+  "temporal_frames": 6,
+  "response_delta_mean_amplitude": 0.0028589367866516113,
+  "deterministic_inference": true
+}
